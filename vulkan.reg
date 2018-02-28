@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Khronos\Vulkan\Drivers]
+"C:\\Windows\\winevulkan.json"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432NodeKhronos\Vulkan\Drivers]
+"C:\\Windows\\winevulkan.json"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Wine\DllRedirects]
+"wined3d"="wined3d-csmt.dll"
+ 
