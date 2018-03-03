@@ -15,9 +15,9 @@ if [ -z "$DXVK" ]; then
 else
     if [ ! -d "$WINEARCH" ]; then
         mkdir $WINEARCH
-        wget -O $WINEARCH/dxgi.dll https://haagch.frickel.club/files/dxvk/latest/64/bin/dxgi.dll
-        wget -O $WINEARCH/d3d11.dll https://haagch.frickel.club/files/dxvk/latest/64/bin/d3d11.dll
-        wget -O $WINEARCH/setup_dxvk.sh https://haagch.frickel.club/files/dxvk/latest/64/bin/setup_dxvk.sh
+        curl https://haagch.frickel.club/files/dxvk/latest/64/bin/dxgi.dll -o $WINEARCH/dxgi.dll 
+        curl https://haagch.frickel.club/files/dxvk/latest/64/bin/d3d11.dll -o $WINEARCH/d3d11.dll
+        curl https://haagch.frickel.club/files/dxvk/latest/64/bin/setup_dxvk.sh -o $WINEARCH/setup_dxvk.sh
     fi
     WINEARCH=$WINEARCH WINEPREFIX=$WINEPREFIX bash $WINEARCH/setup_dxvk.sh
 fi
