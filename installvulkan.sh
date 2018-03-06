@@ -2,13 +2,23 @@
 
 cp winevulkan.json "$WINEPREFIX"/drive_c/windows/
 
-WINEARCH=$WINEARCH WINEPREFIX="$WINEPREFIX" wine regedit /S vulkan.reg
+WINECMD=${WINE-wine}
 
-if [ ! -f VulkanSDK-1.0.51.0-Installer.exe ]; then
-    wget https://vulkan.lunarg.com/sdk/download/1.0.51.0/windows/VulkanSDK-1.0.51.0-Installer.exe
+if [ "$WINECMD" = "wine" ]; then
+    if [ "$WINEARCH" = "win64" ]; then
+        WINECMD=wine64
+    else
+        WINECMD=wine
+    fi
 fi
 
-WINEARCH=$WINEARCH WINEPREFIX="$WINEPREFIX" wine VulkanSDK-1.0.51.0-Installer.exe
+WINEARCH="$WINEARCH" WINEPREFIX="$WINEPREFIX" "$WINECMD" regedit /S vulkan.reg
+
+if [ ! -f VulkanSDK-1.0.68.0-Installer.exe ]; then
+    wget https://vulkan.lunarg.com/sdk/download/1.0.68.0/windows/VulkanSDK-1.0.68.0-Installer.exe
+fi
+
+WINEARCH="$WINEARCH" WINEPREFIX="$WINEPREFIX" "$WINECMD" VulkanSDK-1.0.68.0-Installer.exe
 
 if [ -z "$DXVK" ]; then
     wineserver -k

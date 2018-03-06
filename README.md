@@ -19,12 +19,14 @@ DXVK=1 set this if you also want to install dxvk for experimental dx11->vulkan r
 Examples:  
 
 Windows vulkan game:  
-WINEARCH=win64 WINEPREFIX=/some/directory/path/DOOM2016 bash installvulkan.sh  
+WINEARCH=win64 WINEPREFIX="/some/directory/path/DOOM2016" bash installvulkan.sh  
 
 Game with dxvk:  
-WINEARCH=win64 WINEPREFIX=/some/directory/path/tombraider DXVK=1 bash installvulkan.sh  
+WINEARCH=win64 WINEPREFIX="/some/directory/path/tombraider" DXVK=1 bash installvulkan.sh  
 
 Then launch your game as you normally would using that prefix.  
+
+**NOTE: Don't forget to add quotation marks on the wine prefix in case your path has spaces in it.  
 
 wine-vulkan source:
 [wine-vulkan](http://github.com/roderickc/wine-vulkan)
